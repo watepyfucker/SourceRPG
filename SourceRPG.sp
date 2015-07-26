@@ -1,7 +1,8 @@
 /*========================================
 
 
-						CS:S-RPGMod
+						CS:S-
+							SourceRPGMod
 
 
 ===========================================*/
@@ -14,17 +15,23 @@ log:
 
 #include <sourcemod>
 
+
+//Define
+#define MAXPLAYER 65
+
 //Vars
-new g_Lv[MAXPLAYER+1]
-
-
+new g_lv[MAXPLAYER]
+new g_xp[MAXPLAYER]
+new g_money[MAXPLAYER]
+new g_sp[MAXPLAYER]
+new g_job[MAXPLAYER]
 
 //Mod info
 public Plugin:myinfo=
 {
-	name = "CSS:RPG",
+	name = "SourceRPG",
 	author = "FUCKER",
-	description = "CSS_RPGMOD",
+	description = "RPG模式",
 	version = "v0.0",
 	url = ""
 }
@@ -32,5 +39,8 @@ public Plugin:myinfo=
 //
 public OnPluginStart()
 {
-	
+	new String:Game_Name[32];
+	GetGameFolderName(Game_Name, sizeof(Game_Name));
+	if(!StrEqual(Game_Name, "cstrike", false))
+		SetFailState("不是CSS你玩JB");
 }
